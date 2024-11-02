@@ -3,4 +3,5 @@ node_modules/
 .env
 data/
 logs/
-*.log 
+*.log
+.session/

@@ -14,4 +14,7 @@ services:
     disk:
       name: bot-data
       mountPath: /app/data
-      sizeGB: 1 
+      sizeGB: 1
+    persistentStorage:
+      - path: .wwebjs_auth
+        mountPath: /app/.wwebjs_auth
