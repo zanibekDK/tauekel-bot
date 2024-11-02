@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: tauekel-bot
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TZ
+        value: Asia/Almaty
+    healthCheckPath: /status
+    disk:
+      name: bot-data
+      mountPath: /app/data
+      sizeGB: 1 

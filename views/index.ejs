@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tauekel Bot - QR Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f0f2f5;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .qr-container {
+            margin: 20px 0;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .status.active {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .status.waiting {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        .refresh-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #1976d2;
+            color: white;
+            cursor: pointer;
+        }
+        .refresh-btn:hover {
+            background: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tauekel Bot</h1>
+        <div class="qr-container">
+            <% if (qrCode) { %>
+                <img src="<%= qrCode %>" alt="QR Code">
+                <p class="status waiting">Отсканируйте QR код в WhatsApp</p>
+            <% } else { %>
+                <p class="status active">Бот активен и работает</p>
+            <% } %>
+        </div>
+        <button class="refresh-btn" onclick="location.reload()">Обновить</button>
+    </div>
+    <script>
+        // Автообновление страницы каждые 30 секунд если есть QR код
+        if (document.querySelector('.status.waiting')) {
+            setTimeout(() => location.reload(), 30000);
+        }
+    </script>
+</body>
+</html> 
